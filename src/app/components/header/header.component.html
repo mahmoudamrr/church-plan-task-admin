@@ -1,0 +1,60 @@
+<header class="navbar navbar-expand-lg navbar-dark fixed-top nga-navbar">
+  <nav class="container" aria-label="Main navigation">
+    <a routerLink="/" class="navbar-brand" alt="Accueil">
+      <img
+        src="./assets/params/images/logo/ganatan-logo.png"
+        srcset="
+          ./assets/params/images/logo/ganatan-logo.png,
+          ./assets/params/images/logo/ganatan-logo@2x.png 2x
+        "
+        width="25"
+        height="25"
+        alt="Logo"
+      />
+      <span class="nga-logo mx-1" aria-label="">Church Plan</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <form class="d-flex">
+        <!-- Check if the user is authenticated -->
+        <ng-container *ngIf="isAuthenticated; else authButtons">
+          <!-- If authenticated, show Logout button -->
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-light me-2"
+            (click)="logout()"
+          >
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </button>
+        </ng-container>
+        <!-- If not authenticated, show Login and Sign Up buttons -->
+        <ng-template #authButtons>
+          <button
+            type="button"
+            class="btn btn-sm nga-btn-navbar me-2"
+            routerLink="/signup"
+          >
+            <i class="fas fa-user-plus me-2"></i>Sign up
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-light me-2"
+            routerLink="/login"
+          >
+            <i class="fas fa-sign-in-alt me-2"></i>Login
+          </button>
+        </ng-template>
+      </form>
+    </div>
+  </nav>
+</header>
