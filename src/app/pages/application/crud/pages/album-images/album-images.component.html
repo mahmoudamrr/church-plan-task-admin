@@ -1,0 +1,46 @@
+<app-search-bar
+  [searchField]="searchField"
+  [itemsCount]="itemsCount"
+  [icon]="icon"
+  [results]="results"
+  [placeholder]="placeholder"
+  (search)="onSearch($event)"
+></app-search-bar>
+
+<button
+  type="button"
+  class="font-weight-bold btn btn-outline-info btn-sm mt-4"
+  (click)="createItem()"
+>
+  <i class="fas fa-plus fa-lg mr-2"></i>Create {{ creation }}
+</button>
+
+<div class="row" *ngIf="loaded && itemsCount === 0">
+  <div class="col">
+    <app-search-result
+      [searchField]="searchField"
+      [found]="found"
+      [creation]="creation"
+      [link]="link"
+    >
+    </app-search-result>
+  </div>
+</div>
+
+<div class="row" *ngIf="loaded">
+  <div class="col mt-4">
+    <app-pagination
+      [count]="itemsCount"
+      [page]="itemsPage"
+      [perPage]="itemsPerPage"
+      (changePage)="onChangePage($event)"
+    >
+    </app-pagination>
+
+    <app-grid-images
+      [items]="items"
+      [columns]="columns"
+      [link]="link"
+    ></app-grid-images>
+  </div>
+</div>
